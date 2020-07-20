@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:tmdb_client/services/configuration/configuration_service.dart';
+import 'package:tmdb_client/services/api_configuration/configuration_service.dart';
+import 'package:tmdb_client/services/trending/trending_service.dart';
 
 void main() {
   runApp(MyApp());
@@ -57,7 +58,11 @@ class _MyHomePageState extends State<MyHomePage> {
   void initState() {
     final service = ConfigurationService();
     service.getConfiguration().then((value) {
-      print('got configuration');
+      print('got configuration: ${value.imageConfig}');
+    });
+    final trendingService = TrendingService();
+    trendingService.trendingMovies().then((value) {
+      print('got trending movies: ${value}');
     });
     super.initState();
   }
