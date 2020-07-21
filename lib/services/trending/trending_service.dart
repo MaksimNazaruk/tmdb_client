@@ -5,16 +5,7 @@ import 'package:tmdb_client/services/common/web_request.dart';
 import 'package:tmdb_client/services/trending/entities/trending_item.dart';
 import 'package:tmdb_client/services/trending/parsers/trending_item_parser.dart';
 
-enum TrendingMediaType {
-  all,
-  movie,
-  tv,
-  person,
-}
-
-extension TrendingMediaTypeValue on TrendingMediaType {
-  String get value => describeEnum(this);
-}
+export 'package:tmdb_client/services/trending/entities/trending_item.dart';
 
 enum TrendingTimeWindow {
   day,

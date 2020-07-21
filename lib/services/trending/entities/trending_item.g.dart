@@ -13,6 +13,7 @@ TrendingItem _$TrendingItemFromJson(Map<String, dynamic> json) {
     json['vote_count'] as int,
     (json['vote_average'] as num)?.toDouble(),
     json['title'] as String,
+    json['name'] as String,
     json['release_date'] as String,
     json['original_language'] as String,
     json['original_title'] as String,
@@ -22,6 +23,6 @@ TrendingItem _$TrendingItemFromJson(Map<String, dynamic> json) {
     json['overview'] as String,
     json['poster_path'] as String,
     (json['popularity'] as num)?.toDouble(),
-    json['media_type'] as String,
+    _mediaTypeFromJson(json['media_type']),
   );
 }

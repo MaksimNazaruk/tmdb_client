@@ -65,19 +65,19 @@ class _MyHomePageState extends State<MyHomePage> {
         .trendingMedia(TrendingMediaType.movie, TrendingTimeWindow.day)
         .then((value) {
       print(
-          'got trending movies for today: ${value.items.map((e) => e.title).join(', ')}');
+          'got trending movies for today: ${value.items.map((e) => e.displayTitle).join(', ')}');
     });
     trendingService
         .trendingMedia(TrendingMediaType.tv, TrendingTimeWindow.week)
         .then((value) {
       print(
-          'got trending shows for this week: ${value.items.map((e) => e.title).join(', ')}');
+          'got trending shows for this week: ${value.items.map((e) => e.displayTitle).join(', ')}');
     });
     trendingService
         .trendingMedia(TrendingMediaType.person, TrendingTimeWindow.week)
         .then((value) {
       print(
-          'got trending people for this week: ${value.items.map((e) => e.title).join(', ')}');
+          'got trending people for this week: ${value.items.map((e) => e.displayTitle).join(', ')}');
     });
     super.initState();
   }
