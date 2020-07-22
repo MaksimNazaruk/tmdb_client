@@ -6,8 +6,15 @@ import 'package:tmdb_client/services/api_configuration/entities/api_configuratio
 class ConfigurationService extends TmdbWebService {
   final _apiConfigurationParser = ApiConfigurationParser();
 
-  Future<ApiConfiguration> getConfiguration() async {
-    final request = WebRequest(type: WebRequestType.GET, path: 'configuration');
-    return await fetchData(request, _apiConfigurationParser);
+  ApiConfiguration _cachedConfiguration;
+
+  Future<ApiConfiguration> getConfiguration({bool forceUpdate = false}) async {
+    if (_cachedConfiguration == null || forceUpdate) {
+      final request =
+          WebRequest(type: WebRequestType.GET, path: 'configuration');
+      _cachedConfiguration = await fetchData(request, _apiConfigurationParser);
+    }
+
+    return Future.value(_cachedConfiguration);
   }
 }
